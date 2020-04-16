@@ -340,14 +340,18 @@
 
   <!-- Steps -->
   <h2>Step #1</h2>
-  <p>"component"</p>
-  <p><app-mon-premier></app-mon-premier></p>
+  <h4>"component"</h4>
+  <h4><app-mon-premier></app-mon-premier></h4>
 
   <h2>Step #2</h2>
-  <p>"string interpolation"</p>
-  <p>"property binding"</p>
-  <p>"event binding"</p>
-  <p>"two-way binding"</p>
+  <h4>"string interpolation"</h4>
+  <p ngNonBindable>Appareil : {{ appareilName }} -- Statut : {{ getStatus() }}</p>
+  <h4>"property binding"</h4>
+  <p>[disabled]="!isAuth"</p>
+  <h4>"event binding"</h4>
+  <p>(click)="onAllumer()"</p>
+  <h4>"two-way binding"</h4>
+  <p>[(ngModel)]="appareilName"</p>
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
@@ -364,6 +368,15 @@
     </div>
   </div>
 
+  <h2>Step #3</h2>
+  <h4>"directive structurelle"</h4>
+  <p>*ngIf="condition"</p>
+  <p>*ngFor="let obj of myArray"</p>
+  <h4>"directive par attribut"</h4>
+
+
+<!--  <p ngNonBindable>[ngStyle]="{color: getColor()}"</p>
+  <p ngNonBindable>[ngClass]="{'list-group-item': true, 'list-group-item-success': appareilStatus === 'allumé'}</p>-->
 
   <!-- Footer -->
   <footer>
