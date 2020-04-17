@@ -339,11 +339,11 @@
   </div>
 
   <!-- Steps -->
-  <h2>Step #1</h2>
+  <h2>Step #0</h2>
   <h4>"component"</h4>
   <h4><app-mon-premier></app-mon-premier></h4>
 
-  <h2>Step #2</h2>
+  <h2>Step #1</h2>
   <h4>"string interpolation"</h4>
   <p ngNonBindable>Appareil : {{ appareilName }} -- Statut : {{ getStatus() }}</p>
   <h4>"property binding"</h4>
@@ -368,12 +368,62 @@
     </div>
   </div>
 
-  <h2>Step #3</h2>
+  <h2>Step #2</h2>
   <h4>"directive structurelle"</h4>
   <p>*ngIf="condition"</p>
   <p>*ngFor="let obj of myArray"</p>
   <h4>"directive par attribut"</h4>
+  <p>[ngStyle]</p>
+  <p>[ngClass]</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Mes appareils</h2>
+        <ul class="list-group">
+          <app-appareil2  *ngFor="let appareil of appareils"
+                         [appareilName]="appareil.name"
+                         [appareilStatus]="appareil.status"></app-appareil2>
+        </ul>
+        <button class="btn btn-success"
+                [disabled]="!isAuth"
+                (click)="onAllumer()">Tout allumer</button>
+      </div>
+    </div>
+  </div>
 
+  <h2>Step #3</h2>
+  <h4>"pipe"</h4>
+  <p ngNonBindable>{{ lastUpdate | async | date: 'y MMMM EEEE d' | uppercase }}</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Mes appareils</h2>
+          <app-appareil3></app-appareil3>
+      </div>
+    </div>
+  </div>
+
+  <h2>Step #4</h2>
+  <h4>"service"</h4>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Mes appareils</h2>
+        <ul class="list-group">
+          <app-appareil4  *ngFor="let appareil of appareilsFromService; let i = index"
+                         [appareilName]="appareil.name"
+                         [appareilStatus]="appareil.status"
+                         [index]="i"></app-appareil4>
+        </ul>
+        <button class="btn btn-success"
+                [disabled]="!isAuth"
+                (click)="onAllumer()">Tout allumer</button>
+        <button class="btn btn-danger"
+                [disabled]="!isAuth"
+                (click)="onEteindre()">Tout éteindre</button>
+      </div>
+    </div>
+  </div>
 
 <!--  <p ngNonBindable>[ngStyle]="{color: getColor()}"</p>
   <p ngNonBindable>[ngClass]="{'list-group-item': true, 'list-group-item-success': appareilStatus === 'allumé'}</p>-->
